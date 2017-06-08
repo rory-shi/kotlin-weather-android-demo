@@ -1,9 +1,11 @@
 package com.xiaoma.kotlindemo.ui.adapters
 
+import android.os.Build
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
@@ -13,7 +15,7 @@ import com.xiaoma.kotlindemo.domain.model.ForecastList
 import com.xiaoma.kotlindemo.ui.utils.ctx
 import org.jetbrains.anko.find
 
-class ForecastListAdapter(val weekForecast: ForecastList,
+class ForecastListAdapter (val weekForecast: ForecastList,
                           val itemClick: (Forecast) -> Unit) :
         RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
 
@@ -26,7 +28,7 @@ class ForecastListAdapter(val weekForecast: ForecastList,
         holder.bindForecast(weekForecast[position])
     }
 
-    override fun getItemCount(): Int = weekForecast.size()
+    override fun getItemCount() = weekForecast.size()
 
     class ViewHolder(view: View,
                      val itemClick: (Forecast)->Unit) : RecyclerView.ViewHolder(view) {
@@ -46,6 +48,9 @@ class ForecastListAdapter(val weekForecast: ForecastList,
                 minTemperatureView.text = "${low}º"
                 itemView.setOnClickListener { itemClick(this) }
             }
+
         }
     }
+
+
 }
