@@ -14,8 +14,10 @@ class ForecastRequest(val zipCode: String) {
     }
 
     fun execute(): ForecastResult {
-        val forecastJsonStr = URL(COMPLETE_URL + zipCode).readText()
+//        val forecastJsonStr = URL(COMPLETE_URL + zipCode).readText()
+        val forecastJsonStr = URL("http://api.openweathermap.org/data/2.5/forecast/daily?q=M%C3%BCnchen,DE&appid=6150ffe355cc7a43e0ccef72a197d848").readText()
         return Gson().fromJson(forecastJsonStr, ForecastResult::class.java)
+
     }
 }
 

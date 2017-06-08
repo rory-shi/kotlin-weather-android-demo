@@ -7,9 +7,10 @@ import com.xiaoma.kotlindemo.domain.model.ForecastList
 /**
  * Created by shixinghua on 06/06/2017.
  */
-class RequestForecastCommand(val zipCode: String) : Command<ForecastList>{
+class RequestForecastCommand(val zipCode: String) : Command<ForecastList> {
     override fun execute(): ForecastList {
         val forecastRequest = ForecastRequest(zipCode)
         return ForecastDataMapper().convertFromDataModel(forecastRequest.execute())
     }
+
 }

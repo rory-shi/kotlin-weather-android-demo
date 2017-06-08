@@ -3,11 +3,17 @@ package com.xiaoma.kotlindemo.domain.model
 /**
  * Created by shixinghua on 05/06/2017.
  */
-data class ForecastList(val city: String, val country: String,
-                        val dailyForecast: List<Forecast>) {
-    operator fun get(position: Int): Forecast = dailyForecast[position]
-    fun size(): Int = dailyForecast.size
+//data class ForecastList(val city: String, val country: String,
+//                        val dailyForecast: List<Forecast>) {
+//    operator fun get(position: Int): Forecast = dailyForecast[position]
+//    fun size(): Int = dailyForecast.size
+//}
+//
+//data class Forecast(val date: String, val description: String, val high: Int,
+//                    val low: Int)
+//
+
+data class ForecastList(val lon: Double, val lat: Double, val weather: ForecastWeather) {
 }
 
-data class Forecast(val date: String, val description: String, val high: Int,
-                    val low: Int)
+data class ForecastWeather(val description: String, val high: Float, val low: Float)

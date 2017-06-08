@@ -10,10 +10,10 @@ import com.xiaoma.kotlindemo.domain.model.ForecastList
  */
 
 class ForecastListAdapter(
-        val weekForecast: ForecastList) : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
+        val todayForecast: ForecastList) : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
-        return weekForecast.size()
+        return 1
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,10 +21,20 @@ class ForecastListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        with(weekForecast[position]) {
-            holder.textview.text = "$date - $description - $high/$low"
+//        with(todayForecast[position]) {
+//            holder.textview.text = "$date - $description - $high/$low"
+//        }
+        with(todayForecast) {
+            val high = weather.high
+            val low = weather.low
+            holder.textview.text = "$lon - $lat - $high/$low"
+
         }
     }
 
     class ViewHolder(val textview: TextView) : RecyclerView.ViewHolder(textview)
+
+    public interface OnitemClickListener {
+        operator fun invoke(forecast: ForecastList)
+    }
 }
