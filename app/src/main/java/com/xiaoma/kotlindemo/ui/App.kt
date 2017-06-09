@@ -1,7 +1,7 @@
 package com.xiaoma.kotlindemo.ui
 
 import android.app.Application
-import com.xiaoma.kotlindemo.ui.utils.DelegatesExt
+import com.xiaoma.kotlindemo.extensions.DelegatesExt
 
 /**
  * Created by shixinghua on 08/06/2017.

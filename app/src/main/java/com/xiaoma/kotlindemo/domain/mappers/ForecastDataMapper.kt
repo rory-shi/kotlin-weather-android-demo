@@ -1,9 +1,8 @@
 package com.xiaoma.kotlindemo.domain.mappers
 
-import com.xiaoma.kotlindemo.data.Forecast
-import com.xiaoma.kotlindemo.data.ForecastResult
+import com.xiaoma.kotlindemo.data.server.Forecast
+import com.xiaoma.kotlindemo.data.server.ForecastResult
 import com.xiaoma.kotlindemo.domain.model.ForecastList
-import java.text.DateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 import com.xiaoma.kotlindemo.domain.model.Forecast as ModelForecast
@@ -13,8 +12,8 @@ import com.xiaoma.kotlindemo.domain.model.Forecast as ModelForecast
  */
 public class ForecastDataMapper {
 
-    fun convertFromDataModel(forecast: ForecastResult): ForecastList {
-        return ForecastList(forecast.city.name, forecast.city.country, convertForecastListToDomain(forecast.list))
+    fun convertFromDataModel(zipCode: Long, forecast: ForecastResult) = with(forecast) {
+        ForecastList(zipCode, city.name, city.country, convertForecastListToDomain(forecast.list))
     }
 
     private fun convertForecastListToDomain(list: List<Forecast>): List<ModelForecast> {
@@ -24,14 +23,9 @@ public class ForecastDataMapper {
         }
     }
 
-    private fun convertForecastItemToDomain(forecast: Forecast): ModelForecast {
-        return ModelForecast(convertDate(forecast.dt), forecast.weather[0].description,
-                forecast.temp.max.toInt(), forecast.temp.min.toInt(), generateIconUrl(forecast.weather[0].icon))
-    }
-
-    private fun convertDate(date: Long): String {
-        val df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
-        return df.format(date)
+    private fun convertForecastItemToDomain(forecast: Forecast) = with(forecast) {
+        ModelForecast(forecast.dt, weather[0].description, temp.max.toInt(), temp.min.toInt(),
+                generateIconUrl(weather[0].icon))
     }
 
     private fun generateIconUrl(iconCode: String) = "http://openweathermap.org/img/w/$iconCode.png"

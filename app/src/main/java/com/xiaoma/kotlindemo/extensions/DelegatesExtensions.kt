@@ -1,4 +1,4 @@
-package com.xiaoma.kotlindemo.ui.utils
+package com.xiaoma.kotlindemo.extensions
 
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty

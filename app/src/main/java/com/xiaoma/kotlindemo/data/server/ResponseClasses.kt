@@ -1,4 +1,4 @@
-package com.xiaoma.kotlindemo.data
+package com.xiaoma.kotlindemo.data.server
 
 /**
  * Created by shixinghua on 05/06/2017.

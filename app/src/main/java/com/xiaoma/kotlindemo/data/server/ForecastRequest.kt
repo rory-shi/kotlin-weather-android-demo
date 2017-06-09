@@ -1,4 +1,4 @@
-package com.xiaoma.kotlindemo.data
+package com.xiaoma.kotlindemo.data.server
 
 import com.google.gson.Gson
 import java.net.URL
@@ -6,11 +6,11 @@ import java.net.URL
 /**
  * Created by shixinghua on 24/05/2017.6150ffe355cc7a43e0ccef72a197d848
  */
-class ForecastRequest(private val zipCode: String) {
+class ForecastRequest(private val zipCode: Long) {
     companion object {
         private val APP_ID = "6150ffe355cc7a43e0ccef72a197d848"
         private val URL = "http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&units=metric&cnt=7"
-        private val COMPLETE_URL = "$URL&APPID=$APP_ID&q="
+        private val COMPLETE_URL = "${URL}&APPID=${APP_ID}&q="
     }
 
     fun execute(): ForecastResult {

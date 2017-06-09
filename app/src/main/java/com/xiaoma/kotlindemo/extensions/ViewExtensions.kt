@@ -1,4 +1,4 @@
-package com.xiaoma.kotlindemo.ui.utils
+package com.xiaoma.kotlindemo.extensions
 
 /**
  * Created by shixinghua on 08/06/2017.
